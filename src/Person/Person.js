@@ -1,6 +1,7 @@
 // a simple javascript function component
 import React from 'react';
 
+
 import './Person.css';
 
 
@@ -17,7 +18,6 @@ const person = (props) => {
 {/* Here we can see 2 way binding. Populating the value of the input from state, but also handling the onChange so we can update the input manually as well */}
 {/* For the other inputs on the page not using this change method, you will be unable to type anything into them (because we are not passing the change handler to them in app.js)  */}
             <input type='text' onChange={props.changed} value={props.name}/>
-
         </div>
     )
 };

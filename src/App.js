@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+
+// Components
 import Person from './Person/Person';
+import Radiumexample from './Radium/Radium'
 
 class App extends Component {
   state = {
@@ -74,7 +77,7 @@ class App extends Component {
     // The individual found at the index (assentially just changing the name)
     personCopyFromState[personIndex] = foundPerson;
 
-    // lastly, we update state to the personCopy valye above.
+    // lastly, we update state to the personCopy value above.
     this.setState( {personsTwo : personCopyFromState} )
   }
 
@@ -91,11 +94,12 @@ class App extends Component {
 
   render() {
     const style = {
-     backgroundColor: 'white',
+     backgroundColor: 'green',
+     color: 'white',
      font: 'inherit',
      border: '1px solid blue',
      padding: '8px',
-     cursor: 'pointer'
+     cursor: 'pointer',
     };
 
     let persons = null;
@@ -114,7 +118,20 @@ class App extends Component {
             click={this.switchNameHandler.bind(this, 'Killa-Kitty')} />
       </div>
       );
+// dynamic styling off of the if statement here. Below we change the box to red all within this if/then statement
+      style.backgroundColor = 'red';
     }
+    
+  let classes = ['red', 'bold'].join(' '); // Making a css class list in a variable, used in example 3
+    
+  // A different way using if statements to add classes dynamically, in example 5
+  const classesTwo = [];
+  if (this.state.personsTwo.length <= 2) {
+      classesTwo.push('red'); //classes = ['red']
+    }
+  if (this.state.personsTwo.length <= 1) {
+    classesTwo.push('bold'); // classes = ['red', 'bold']
+  }
 
     // The above code could also look like this to be shorter:
                     //       let persons = null;
@@ -134,8 +151,12 @@ class App extends Component {
 
     return (
       <div className="App">
-<h1>Hi, I am a React App!!!! BURGER BUILDERRRR</h1>
-<h2>EXAMPLE 1</h2>
+        <h1>Hi, I am a React App!!!! BURGER BUILDERRRR</h1>
+        <h2>OK HERRE WE GO BELOW</h2>
+        <h2>----------------------------------------------------------------------------------------------</h2>
+        <h2>----------------------------------------------------------------------------------------------</h2>
+        <h3>This is the first Component with STYLING!!!</h3>
+        <h2>EXAMPLE 1</h2>
           {/* using bind to pass an argument into the switchNameHandler
           'this' refers to the class, and after the comma is the new value */}
         <button 
@@ -196,6 +217,9 @@ class App extends Component {
         to toggle the variable to dispay or be null. We call the variable below with 'persons' */}
         {persons}
 
+        {/* this is assigning the classes above, which are currently a string variable */}
+        <p className={classes}>It's working! Watch my classes change "let classes above" </p>
+
 
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
 <h2>EXAMPLE 4</h2>
@@ -242,7 +266,18 @@ class App extends Component {
             // making it possible to pass both the event and the ID in the array as seen below
             changed={(event) => this.personsTwoNameChangedHandler(event, person.id)} />
         })}
+
+        {/* It is the join method here and above that assigned the classes as a string */}
+        <p className={classesTwo.join(' ')}>It works it works (from the above 'if' statements)</p>
        
+<h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
+<h2>EXAMPLE 6</h2>
+
+<p>this is for the radium example, because I was getting key issues</p>
+<Radiumexample/>>
+
+        
+
       </div>
     );
   }

@@ -91,6 +91,8 @@ class App extends Component {
     this.setState({showPersons: !doesShow});
   }
 
+  
+
 
 
   render() {
@@ -104,6 +106,8 @@ class App extends Component {
     };
 
     let persons = null;
+
+    let swag = null;
 
     if(this.state.showPersons) {
       // this is where persons is being set in the third example below
@@ -121,6 +125,7 @@ class App extends Component {
       );
 // dynamic styling off of the if statement here. Below we change the box to red all within this if/then statement
       style.backgroundColor = 'red';
+      swag = <p className='swag'>fuck it up fuck it up</p>
     }
     
   let classes = ['red', 'bold'].join(' '); // Making a css class list in a variable, used in example 3
@@ -283,10 +288,17 @@ class App extends Component {
 <h2>EXAMPLE 7</h2>
 
 <p>this is for the Styled Components example</p>
-<StyledCompExample/>
+      <StyledCompExample/>
         
 
+<h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
+<h2>EXAMPLE 8</h2>
 
+        <p>I tell all my hoes... Rake it up, Break it down</p>
+        <button className='button'onClick={this.renderPersonHandler}>Back it up</button>
+        {swag}
+
+        <p>line break</p>
 
       </div>
     );

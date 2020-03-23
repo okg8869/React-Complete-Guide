@@ -3,7 +3,8 @@ import './App.css';
 
 // Components
 import Person from './Person/Person';
-import Radiumexample from './Radium/Radium'
+import Radiumexample from './Radium/Radium';
+import StyledCompExample from './StyledComponent/StyledCompExample';
 
 class App extends Component {
   state = {
@@ -274,9 +275,18 @@ class App extends Component {
 <h2>EXAMPLE 6</h2>
 
 <p>this is for the radium example, because I was getting key issues</p>
-<Radiumexample/>>
 
+        <Radiumexample/>
+
+
+<h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
+<h2>EXAMPLE 7</h2>
+
+<p>this is for the Styled Components example</p>
+<StyledCompExample/>
         
+<p>test test test!</p>
+
 
       </div>
     );

@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
+
+
+// RADIUM IS A SOLUTION FOR PSUEDO SELECTORS AND MEDIA QUERRIES IN REACT COMPONENTS
+// AND BEING ABLE TO SCOPE THEM TO COMPONENTS
+
+
+// The import of 'StyleRoot' is needed to add media querries. What we would need is to import 
+// StyleRoot at the app.js level, and then wrap my return code below in <StyleRoot></StyleRoot>
+// that will allow the below media querry to load and resolve the "addCSS" issue
 
 class Radiumexample extends Component {
 
@@ -16,7 +25,12 @@ class Radiumexample extends Component {
             ':hover': {
                 backgroundColor: 'lightgreen',
                 color: 'black'
-              }
+              },
+            //   this is the radium style media querry
+            // '@media (min-width: 500px)' : {
+            //     width: '450px',
+
+            // }
         }
 
         // Similar to changing the button color in the if statements in the app.js file

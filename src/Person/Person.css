@@ -7,3 +7,10 @@
     text-align: center;
 }
 
+/* 
+this is a standard media querry
+@media (min-width: 500px) {
+    .Person {
+        width: 450px;
+    }
+} */

@@ -3,8 +3,8 @@ import './App.css';
 
 // Components
 import Person from './Person/Person';
-import Radiumexample from './Radium/Radium';
-import StyledCompExample from './StyledComponent/StyledCompExample';
+import Radiumexample from './CSSalternatives/Radium/Radium';
+import StyledCompExample from './CSSalternatives/StyledComponent/StyledCompExample';
 
 class App extends Component {
   state = {
@@ -285,7 +285,7 @@ class App extends Component {
 <p>this is for the Styled Components example</p>
 <StyledCompExample/>
         
-<p>test test test!</p>
+
 
 
       </div>

@@ -49,7 +49,7 @@ class Radiumexample extends Component {
 
         return (
             <div>
-                <button style = {style}> Click me!! </button>
+                <button style = {style}> Just Look! I don't do much</button>
 
 
         </div>

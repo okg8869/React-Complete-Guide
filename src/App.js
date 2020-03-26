@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 // Components
-import Person from './Person/Person';
-import Radiumexample from './CSSalternatives/Radium/Radium';
-import StyledCompExample from './CSSalternatives/StyledComponent/StyledCompExample';
-import ErrorBoundary  from './ErrorHandling/ErrorBoundary'
+import Person from './Components/Person/Person';
+import Radiumexample from './Components/CSSalternatives/Radium/Radium';
+import StyledCompExample from './Components/CSSalternatives/StyledComponent/StyledCompExample';
+import ErrorBoundary  from './Components/ErrorHandling/ErrorBoundary'
 
 class App extends Component {
   state = {
@@ -319,7 +319,12 @@ a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
               </ErrorBoundary>
             )})}
         </div>
+<h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
+<h2>EXAMPLE 8</h2> 
+<h2>From here on out, we are working on getting more specific components</h2>
+
         
+
 
       </div>
     );

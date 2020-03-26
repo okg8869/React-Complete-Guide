@@ -6,9 +6,10 @@ import './Person.css';
 
 
 const person = (props) => {
-    // Using Props in the function, 
-    //As well as running a small simple expression in line using {}
+// Using Props in the function, 
+//As well as running a small simple expression in line using {}
     return(
+
         <div className='Person'>
 
             <p onClick={props.click}>I'm {props.name}, I am {props.age} years old, and my favorite number is {Math.floor(Math.random() * 30)}!!</p>

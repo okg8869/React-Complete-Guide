@@ -33,14 +33,14 @@ class Radiumexample extends Component {
             // }
         }
 
-        // Similar to changing the button color in the if statements in the app.js file
-        // we could change the hover coloring and whatnot with something like
+// Similar to changing the button color in the if statements in the app.js file
+// we could change the hover coloring and whatnot with something like
 
         if(this.state.showPersons) {
             
-      // dynamic styling off of the if statement here. Below we change the box to red all within this if/then statement
+// dynamic styling off of the if statement here. Below we change the box to red all within this if/then statement
             style.backgroundColor = 'red';
-    // here you nee to use brackets instead of the "." to target the hover styling
+// here you nee to use brackets instead of the "." to target the hover styling
             style[':hover'] = {
                 backgroundColor: 'salmon',
                 color: 'white'

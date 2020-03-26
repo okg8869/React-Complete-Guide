@@ -5,6 +5,7 @@ import './App.css';
 import Person from './Person/Person';
 import Radiumexample from './CSSalternatives/Radium/Radium';
 import StyledCompExample from './CSSalternatives/StyledComponent/StyledCompExample';
+import ErrorBoundary  from './ErrorHandling/ErrorBoundary'
 
 class App extends Component {
   state = {
@@ -23,8 +24,8 @@ class App extends Component {
   }
 
   switchNameHandler = (newName) => {
-    // console.log('Was clicked');
-    // **DO NOT DO THIS** = "this.state.person[0].name = 'newNameHere' "
+// console.log('Was clicked');
+// **DO NOT DO THIS** = "this.state.person[0].name = 'newNameHere' "
     this.setState( {
       persons: [
         { name: 'Donald', age: 29 }, 
@@ -35,12 +36,12 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    // first we grab the current state and store to a variable
-    // using the spread operator '...'
+// first we grab the current state and store to a variable
+// using the spread operator '...'
     const personsNew = [...this.state.personsTwo];
-    // then we splice the new variable to remove 1 name from the array
+// then we splice the new variable to remove 1 name from the array
     personsNew.splice(personIndex, 1);
-    // then we set the state to the new shortened list of names
+// then we set the state to the new shortened list of names
     this.setState({personsTwo: personsNew})
   }
 
@@ -55,39 +56,39 @@ class App extends Component {
   }
 
   personsTwoNameChangedHandler = (event, id) => {
-    // uses findIndex to identify the single person added by the input, and grab the index of that element
+// uses findIndex to identify the single person added by the input, and grab the index of that element
     const personIndex = this.state.personsTwo.findIndex(person => {
-      //return true or false if the id in state matches the id being passed as an argument to the name change handler
-      // if True, then the index will hold the correct name
+//return true or false if the id in state matches the id being passed as an argument to the name change handler
+// if True, then the index will hold the correct name
       return person.id === id;
     });
 
-    // We then grab the above elements value (at the index stored in personIndex) and assign it to a variable
-    // We don't want to mutate the state directly, so we make a new javascript object using '{}' and use the spread operator to make a copy
+// We then grab the above elements value (at the index stored in personIndex) and assign it to a variable
+// We don't want to mutate the state directly, so we make a new javascript object using '{}' and use the spread operator to make a copy
     const foundPerson = {
       ...this.state.personsTwo[personIndex]
     };
 
-    // We now update the copy we've made - and change the name value to the target value like we did before
+// We now update the copy we've made - and change the name value to the target value like we did before
     foundPerson.name = event.target.value;
 
-    // we create a new variable to look at the current state 
-    // (not the copy we made above, this is a new copy that we will be mutating)
+// we create a new variable to look at the current state 
+// (not the copy we made above, this is a new copy that we will be mutating)
     const personCopyFromState = [...this.state.personsTwo];
-    // Now that we have pulled in the whole state from personsTwo above, we now update
-    // The individual found at the index (assentially just changing the name)
+// Now that we have pulled in the whole state from personsTwo above, we now update
+// The individual found at the index (assentially just changing the name)
     personCopyFromState[personIndex] = foundPerson;
 
-    // lastly, we update state to the personCopy value above.
+// lastly, we update state to the personCopy value above.
     this.setState( {personsTwo : personCopyFromState} )
   }
 
 
 
   renderPersonHandler = () => {
-    // create a variable and set to the current value of showPersons in state - 'true'
+// create a variable and set to the current value of showPersons in state - 'true'
     const doesShow = this.state.showPersons;
-    // then we set it to what doesShow is not - thus toggling back and forth when the button is clicked
+// then we set it to what doesShow is not - thus toggling back and forth when the button is clicked
     this.setState({showPersons: !doesShow});
   }
 
@@ -110,7 +111,7 @@ class App extends Component {
     let swag = null;
 
     if(this.state.showPersons) {
-      // this is where persons is being set in the third example below
+// this is where persons is being set in the third example below
       persons = (
         <div>
           <Person 
@@ -130,7 +131,7 @@ class App extends Component {
     
   let classes = ['red', 'bold'].join(' '); // Making a css class list in a variable, used in example 3
     
-  // A different way using if statements to add classes dynamically, in example 5
+// A different way using if statements to add classes dynamically, in example 5
   const classesTwo = [];
   if (this.state.personsTwo.length <= 2) {
       classesTwo.push('red'); //classes = ['red']
@@ -139,7 +140,7 @@ class App extends Component {
     classesTwo.push('bold'); // classes = ['red', 'bold']
   }
 
-    // The above code could also look like this to be shorter:
+// The above code could also look like this to be shorter:
                     //       let persons = null;
 
                     //       if(this.state.showPersons) {
@@ -153,7 +154,7 @@ class App extends Component {
                     //         </div>
                     //         );
                     //       }
-    // Similar to how it is below in the third example
+// Similar to how it is below in the third example
 
     return (
       <div className="App">
@@ -163,8 +164,8 @@ class App extends Component {
         <h2>----------------------------------------------------------------------------------------------</h2>
         <h3>This is the first Component with STYLING!!!</h3>
         <h2>EXAMPLE 1</h2>
-          {/* using bind to pass an argument into the switchNameHandler
-          'this' refers to the class, and after the comma is the new value */}
+{/* using bind to pass an argument into the switchNameHandler
+'this' refers to the class, and after the comma is the new value */}
         <button 
           style={style}
           onClick={this.switchNameHandler.bind(this, 'K-Dog')}>Switch Name</button>
@@ -172,20 +173,20 @@ class App extends Component {
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age} 
-          // dynamically updating the page using the 'onChange' listener
+// dynamically updating the page using the 'onChange' listener
           changed={this.nameChangedHandler} />
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age} 
-          // passing a method as a prop below:
-          // using bind to add another new value for newName in the method above
+// passing a method as a prop below:
+// using bind to add another new value for newName in the method above
           click={this.switchNameHandler.bind(this, 'Killa-Kitty')} />
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age} 
-            // passing a method as a prop below:
-          // when arrow functions are written in one line, they inherently add a 'return' after the arrow
-          // and so the below function is being returned 'onClick' ***Bind is better to use because of potential React re-rendering issues***
+// passing a method as a prop below:
+// when arrow functions are written in one line, they inherently add a 'return' after the arrow
+// and so the below function is being returned 'onClick' ***Bind is better to use because of potential React re-rendering issues***
           click={() => this.switchNameHandler('KennyWise')} />
         <Person 
           name='Archibauld' age='26'>This is where props.children is grabbing
@@ -198,11 +199,11 @@ class App extends Component {
         <button 
           style={style}
           onClick={this.renderPersonHandler}>Show Names</button>
-          {/* Here I am wrapping the div in curly braces to make it a javascript object - allowing for 
-          us to write the follow expression to show/hide the whole div using the showPersons value in the state */}
+{/* Here I am wrapping the div in curly braces to make it a javascript object - allowing for 
+us to write the follow expression to show/hide the whole div using the showPersons value in the state */}
         { 
-        // this below is a turnary expression (The ? and : null below) - that is essentially an if/then statement
-        // that will either render the code, or render 'null'
+// this below is a turnary expression (The ? and : null below) - that is essentially an if/then statement
+// that will either render the code, or render 'null'
           this.state.showPersons === true ? 
             <div>
               <Person 
@@ -219,24 +220,24 @@ class App extends Component {
 
 <h1>ANOTHER WAY TO DO THE ABOVE TOGGLE</h1>
 <h2>EXAMPLE 3</h2>
-        {/* Here the div and the jsc code is being set above as a variable, and we are using an if/then statement
-        to toggle the variable to dispay or be null. We call the variable below with 'persons' */}
+{/* Here the div and the jsc code is being set above as a variable, and we are using an if/then statement
+to toggle the variable to dispay or be null. We call the variable below with 'persons' */}
         {persons}
 
-        {/* this is assigning the classes above, which are currently a string variable */}
+{/* this is assigning the classes above, which are currently a string variable */}
         <p className={classes}>It's working! Watch my classes change "let classes above" </p>
 
 
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
 <h2>EXAMPLE 4</h2>
-        {/* A big problem with how we are rendering the 'Persons' above is that we are using each persons index
-        so we run the risk of that breaking as the list is changed. We can instead print out the list like so */}
+{/* A big problem with how we are rendering the 'Persons' above is that we are using each persons index
+so we run the risk of that breaking as the list is changed. We can instead print out the list like so */}
 
-        {/* Here we are using the map function to map the persons array in our state and executing a method
-        on each element in the array, which we are labeling 'person' to avoid confusion, we then write an ES6
-        arrow function for the map function to pass each object to. Since we need to return JSX, we will map each
-        object to a Person component. Now every element in the array is mapped as a javascript object into the Person
-        Component */}
+{/* Here we are using the map function to map the persons array in our state and executing a method
+on each element in the array, which we are labeling 'person' to avoid confusion, we then write an ES6
+arrow function for the map function to pass each object to. Since we need to return JSX, we will map each
+object to a Person component. Now every element in the array is mapped as a javascript object into the Person
+Component */}
 
         
         {this.state.persons.map(person => {
@@ -245,8 +246,8 @@ class App extends Component {
             age={person.age}/>
         })}
 
-        {/* We could then replace the code in the if statement at the top with this to instead render this when
-        the toggle button is clicked */}
+{/* We could then replace the code in the if statement at the top with this to instead render this when
+the toggle button is clicked */}
 
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
 <h2>EXAMPLE 5</h2>
@@ -255,25 +256,25 @@ class App extends Component {
           style={style}
           onClick={this.deletePersonHandler}>Delete Names</button>
 
-        {/* We are now adding the index to the argument of the map function, and are then 
-        passing it to the deletePersonHandler by making an arrow function (you could also use 'bind') */}
+{/* We are now adding the index to the argument of the map function, and are then 
+passing it to the deletePersonHandler by making an arrow function (you could also use 'bind') */}
         {this.state.personsTwo.map((person, index) => {
           return <Person 
             click={() => this.deletePersonHandler(index)}
             name={person.name}
             age={person.age}
-            // in personsTwo in the state we have added an id, which we are using for the key
-            // the 'key' will be the unique identifier that react can use to identify current vs past 
-            // values in this array
+// in personsTwo in the state we have added an id, which we are using for the key
+// the 'key' will be the unique identifier that react can use to identify current vs past 
+// values in this array
             key={person.id}
-            // here we are re-using the name change handler (edited to use the different name state values)
-            // and are passing the event from the handler (the value typed into the input)
-            // this is how we capture the event being listened to (changed) and pass it to the name change handler
-            // making it possible to pass both the event and the ID in the array as seen below
+// here we are re-using the name change handler (edited to use the different name state values)
+// and are passing the event from the handler (the value typed into the input)
+// this is how we capture the event being listened to (changed) and pass it to the name change handler
+// making it possible to pass both the event and the ID in the array as seen below
             changed={(event) => this.personsTwoNameChangedHandler(event, person.id)} />
         })}
 
-        {/* It is the join method here and above that assigned the classes as a string */}
+{/* It is the join method here and above that assigned the classes as a string */}
         <p className={classesTwo.join(' ')}>It works it works (from the above 'if' statements)</p>
        
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
@@ -298,7 +299,27 @@ class App extends Component {
         <button className='button'onClick={this.renderPersonHandler}>Back it up</button>
         {swag}
 
-        <p>line break</p>
+<h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
+<h2>EXAMPLE 8 - Error Catching</h2>
+{/* This is being wrapped in <ErrorBoundary>, which is now a higher order component
+Right now, this will throw the error on the page, but once it is in production it will
+instead display the 'error message' from state. You only want to use this in places where
+you know there will be an error. DON'T WANT TO USE IT EVERYWHERE - only when troubleshooting
+a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
+        <div>
+          {this.state.personsTwo.map((person, index) => {
+            return (
+              <ErrorBoundary key={person.id}> 
+                <Person 
+                  click={() => this.deletePersonHandler(index)}
+                  name={person.name}
+                  age={person.age}
+                  
+                  changed={(event) => this.personsTwoNameChangedHandler(event, person.id)} />
+              </ErrorBoundary>
+            )})}
+        </div>
+        
 
       </div>
     );

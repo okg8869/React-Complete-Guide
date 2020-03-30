@@ -6,6 +6,7 @@ import './Person.css';
 
 
 const person = (props) => {
+    console.log('[Person.js] rendering...');
 // Using Props in the function, 
 //As well as running a small simple expression in line using {}
     return(

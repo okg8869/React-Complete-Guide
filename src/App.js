@@ -10,6 +10,15 @@ import PersonsNew from './Components/PersonsNew/PeronsNew';
 import Cockpit from './Components/Cockpit/Cockpit'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log(['[App.js] constructor']);
+// state can also be initialized here, as opposed of regularly outside of the constructor
+// use this.state, instead of this.SetState because state does not exist yet
+  // this.state = 
+  }
+
+
   state = {
     persons: [
       { name: 'Oliver', age: 29 }, 
@@ -24,6 +33,19 @@ class App extends Component {
       { id: '2', name: 'David', age: 29 },
       { id: '3', name: 'Harrison', age: 35 }
     ]
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
   }
 
   switchNameHandler = (newName) => {
@@ -102,6 +124,8 @@ class App extends Component {
 
 
   render() {
+    console.log('[App.js] render');
+
     const style = {
      backgroundColor: 'green',
      color: 'white',

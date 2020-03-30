@@ -4,6 +4,7 @@ import Person from '../Person/Person';
 
 
 const PersonsNew = (props) => props.persona.map( ( person, index ) => {
+  console.log('[PersonsNew.js] rendering...');
   return <Person 
         click={() => props.clicked( index )}
         name={person.name}

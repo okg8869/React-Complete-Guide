@@ -40,12 +40,24 @@ class App extends Component {
     return state;
   }
 
+// Only early versions of 'componentWillMount()' will support this lifecycle identifyer
+// Commenting out will remove error in front end
   componentWillMount() {
     console.log('[App.js] componentWillMount')
   }
 
   componentDidMount() {
     console.log('[App.js] componentDidMount');
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+// here, you have to return true/fales (true if react should update) - (false if it should not)
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
   }
 
   switchNameHandler = (newName) => {

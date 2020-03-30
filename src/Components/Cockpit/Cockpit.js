@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 
 const Cockpit = (props) => {
 
-  if (props.showPersona) {
-    
-  }
+  useEffect(() => {
+    console.log('[Cockpit.js useEffect');
+    // Http requests can be placed here
+    // UseEffect will render for EVERY render cycle
+  } );
 
   return(
     <div >

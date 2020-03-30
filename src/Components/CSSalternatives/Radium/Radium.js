@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+import Radium from 'radium';
 
 
 // RADIUM IS A SOLUTION FOR PSUEDO SELECTORS AND MEDIA QUERRIES IN REACT COMPONENTS

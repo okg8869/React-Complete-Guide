@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
+
+import Person from '../Person/Person';
 
 
-const PersonsNew = (props) => {
-  return(
-    <div >
-
-      <p>text</p>
-      <strong>text</strong>
-      <input type='text' onChange={props.changed} value={props.name}/>
-    </div>
-  )
-};
+const PersonsNew = (props) => props.persona.map( ( person, index ) => {
+  return <Person 
+        click={() => props.clicked( index )}
+        name={person.name}
+        age={person.age}
+        key={person.id}
+        changed={(event) => props.changed( event, person.id )} />
+} );
   
  export default PersonsNew;

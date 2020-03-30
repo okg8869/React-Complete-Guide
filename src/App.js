@@ -6,6 +6,8 @@ import Person from './Components/Person/Person';
 import Radiumexample from './Components/CSSalternatives/Radium/Radium';
 import StyledCompExample from './Components/CSSalternatives/StyledComponent/StyledCompExample';
 import ErrorBoundary  from './Components/ErrorHandling/ErrorBoundary'
+import PersonsNew from './Components/PersonsNew/PeronsNew';
+import Cockpit from './Components/Cockpit/Cockpit'
 
 class App extends Component {
   state = {
@@ -16,6 +18,7 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false,
+    showPersona: false,
     personsTwo: [
       { id: '1', name: 'Tucker', age: 28 },
       { id: '2', name: 'David', age: 29 },
@@ -88,8 +91,10 @@ class App extends Component {
   renderPersonHandler = () => {
 // create a variable and set to the current value of showPersons in state - 'true'
     const doesShow = this.state.showPersons;
+    const doesShowTwo = this.state.showPersona;
 // then we set it to what doesShow is not - thus toggling back and forth when the button is clicked
     this.setState({showPersons: !doesShow});
+    this.setState({showPersona: !doesShowTwo})
   }
 
   
@@ -141,19 +146,20 @@ class App extends Component {
   }
 
 // The above code could also look like this to be shorter:
-                    //       let persons = null;
+// Below was originally an example, not it is being repurposed to make more specific components
+// But the comment holds true
+  let persona = null;   
 
-                    //       if(this.state.showPersons) {
-                    //         persons = (
-                    //           <div>
-                    //              {this.state.persons.map(person => {
-                    //                 return <Person 
-                    //                   name={person.name}
-                    //                   age={person.age}/>
-                    //               })}
-                    //         </div>
-                    //         );
-                    //       }
+  if(this.state.showPersona) {
+    persona = (
+      <div>
+          <PersonsNew 
+            persona={this.state.personsTwo}
+            clicked={this.deletePersonHandler}
+            changed={this.personsTwoNameChangedHandler}/>
+      </div>
+    );
+  }
 // Similar to how it is below in the third example
 
     return (
@@ -220,7 +226,7 @@ us to write the follow expression to show/hide the whole div using the showPerso
 
 <h1>ANOTHER WAY TO DO THE ABOVE TOGGLE</h1>
 <h2>EXAMPLE 3</h2>
-{/* Here the div and the jsc code is being set above as a variable, and we are using an if/then statement
+{/* Here the div and the jsx code is being set above as a variable, and we are using an if/then statement
 to toggle the variable to dispay or be null. We call the variable below with 'persons' */}
         {persons}
 
@@ -322,8 +328,16 @@ a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
 <h2>EXAMPLE 8</h2> 
 <h2>From here on out, we are working on getting more specific components</h2>
-
-        
+       
+      <Cockpit 
+// Here is the Title props being passed into the Cockpit module. This is to show the this.
+// selector for props. 'this.props.appTitle' -- it is actually being passed into the App.js
+// component from the index.js file!
+        title={this.props.appTitle}
+        showPersona={this.state.showPersona}
+        persona={this.state.PersonsTwo}
+        clicked={this.renderPersonHandler}/>
+      {persona}
 
 
       </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classes from './App.css';
 import './App.css';
 
 // Components
@@ -10,7 +11,8 @@ import PersonsNew from './Components/PersonsNew/PeronsNew';
 import Cockpit from './Components/Cockpit/Cockpit'
 
 //Higher Order Components (hoc)
-
+import withClass from './hoc/withClass';
+import Auxillary from './hoc/Auxillary';
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +38,8 @@ class App extends Component {
       { id: '1', name: 'Tucker', age: 28 },
       { id: '2', name: 'David', age: 29 },
       { id: '3', name: 'Harrison', age: 35 }
-    ]
+    ],
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -121,8 +124,18 @@ class App extends Component {
     personCopyFromState[personIndex] = foundPerson;
 
 // lastly, we update state to the personCopy value above.
-    this.setState( {personsTwo : personCopyFromState} )
-  }
+    this.setState( (prevState, props) => {
+      return{
+        personsTwo : personCopyFromState, 
+        changeCounter: prevState.changeCounter + 1 //This is recommended when updating state when depending on an old state
+    };
+  });
+  };
+// Looking above at the setState function, setState just schedules the state chamge, and so it is not
+// guarenteed that the state will not be updated elsewhere before this happens. Using the above syntax,
+// You have another function that is grabbing the prevState, and then looking at 'prevState.changeCounter'
+// instead of 'this.state.changeCounter. This way you can guarentee that you are updating the version of 
+// state that you want to be updating
 
 
 
@@ -203,7 +216,8 @@ class App extends Component {
 // Similar to how it is below in the third example
 
     return (
-      <div className="App">
+      <Auxillary>
+      <div className='App'>
         <h1>Hi, I am a React App!!!! BURGER BUILDERRRR</h1>
         <h2>OK HERRE WE GO BELOW</h2>
         <h2>----------------------------------------------------------------------------------------------</h2>
@@ -383,10 +397,12 @@ a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
         onClick={() => {this.setState({ showCockpit: false })
         }}>REMOVE COCKPIT</button>
 
-
-      </div>
+        </div>
+      </Auxillary>
     );
   }
 }
 
-export default App;
+// This withClass is being defined in the hoc folder. Allowing us to wrap the entire component
+// in a CSS class and a <div/> element
+export default withClass(App, classes.App);

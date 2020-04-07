@@ -19,7 +19,15 @@ class PersonsNew extends Component {
   shouldComponentUpdate(nextProps, nextState) {
 // here, you have to return true/fales (true if react should update) - (false if it should not)
     console.log('[PersonsNew.js] shouldComponentUpdate');
-    return true; 
+    if (
+        nextProps.PersonsNew !== this.props.PersonsNew ||
+        nextProps.changed !== this.props.changed       ||
+        nextProps.clicked !== this.props.clicked 
+      ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // this will save before component updates, and load the returned value into componentDidUpdate
@@ -32,6 +40,11 @@ class PersonsNew extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[PersonsNew.js] componentDidUpdate')
     console.log(snapshot);
+  }
+
+  componentWillUnmount() {
+    console.log('[PersonsNew.js] componentWillUnmount')
+// Here you can put any code that needs to run before the component unmounts
   }
 
   render() {

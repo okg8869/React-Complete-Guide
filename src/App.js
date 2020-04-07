@@ -9,6 +9,9 @@ import ErrorBoundary  from './Components/ErrorHandling/ErrorBoundary'
 import PersonsNew from './Components/PersonsNew/PeronsNew';
 import Cockpit from './Components/Cockpit/Cockpit'
 
+//Higher Order Components (hoc)
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +31,7 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false,
     showPersona: false,
+    showCockpit: true,
     personsTwo: [
       { id: '1', name: 'Tucker', age: 28 },
       { id: '2', name: 'David', age: 29 },
@@ -364,7 +368,7 @@ a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
 <h1>THIS IS A PAGE BREAK FOR THE BELOW TO SAVE SPACE AND THE CODE EXAMPLES BELOW</h1>
 <h2>EXAMPLE 8</h2> 
 <h2>From here on out, we are working on getting more specific components</h2>
-       
+      {this.state.showCockpit ? (
       <Cockpit 
 // Here is the Title props being passed into the Cockpit module. This is to show the this.
 // selector for props. 'this.props.appTitle' -- it is actually being passed into the App.js
@@ -373,7 +377,11 @@ a trouble component. NICE TO KNOW, NOT TO USE EVERYWHERE*/}
         showPersona={this.state.showPersona}
         persona={this.state.PersonsTwo}
         clicked={this.renderPersonHandler}/>
+      ) : null}
       {persona}
+      <button 
+        onClick={() => {this.setState({ showCockpit: false })
+        }}>REMOVE COCKPIT</button>
 
 
       </div>

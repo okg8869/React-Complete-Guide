@@ -10,6 +10,7 @@ import withClass from '../../hoc/withClass';
 
 
 import './Person.css';
+import AuthContext from '../../context/auth-context'
 
 
 class Person extends Component {
@@ -19,10 +20,14 @@ class Person extends Component {
         this.inputElementRef = React.createRef()
     }
 
+// Another way to use the context API. IT MUST BE DEFINED THIS WAY BELOW
+    static contextType = AuthContext;
+
     componentDidMount() {
-        // this.inputElement.focus() -- This ties in with the 'old' ref method below
-        // The goal is to focus on the last input when the page loads (cursor in the last input)
+// this.inputElement.focus() -- This ties in with the 'old' ref method below
+// The goal is to focus on the last input when the page loads (cursor in the last input)
         this.inputElementRef.current.focus();
+        console.log(this.context.authenticated);
     }
 
 
@@ -32,6 +37,15 @@ class Person extends Component {
 //As well as running a small simple expression in line using {}
         return(
             <Auxillary>
+                {/* Instead of doing it like this, do it the new way below */}
+                {/* <AuthContext.Consumer>
+                    {(context) => context.authenticated ? <p>Authenticated!</p> : <p>Please log in.</p> }
+                </AuthContext.Consumer> */}
+
+                {/* This is now possible because of the 'static = contextType' above */}
+                { this.context.authenticated ? <p>Authenticated!</p> : <p>Please log in.</p> }
+                
+                
                 <div className='Person'>
                     <p onClick={this.props.click}>I'm {this.props.name}, I am {this.props.age} years old, and my favorite number is {Math.floor(Math.random() * 30)}!!</p>
 {/* this.this.props.children grabs all  this.props being passed into the component, even if they are not declared*/}

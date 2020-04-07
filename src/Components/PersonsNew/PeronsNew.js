@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 import Person from '../Person/Person';
 
-
-
 class PersonsNew extends Component {
   static getDerivedStateFromProps(props, state) {
     console.log('[PersonsNew.js] getDerivedStateFromProps');
@@ -56,7 +54,7 @@ class PersonsNew extends Component {
           age={person.age}
           key={person.id}
           changed={(event) => this.props.changed( event, person.id )} />
-    )} );
+    )});
   };
 };
 
